@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="685.0" prefWidth="765.0" style="-fx-background-color: lavender;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.problema3_javafx.subscriberProfileController">
+   <children>
+      <Label fx:id="adminName" layoutX="99.0" layoutY="24.0" text="Admin" />
+      <Button fx:id="buttonLogOut" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" onAction="#onLogOutButtonPressed" text="Log out" />
+      <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logged in as:" />
+      <TableView fx:id="table" layoutX="24.0" layoutY="179.0" prefHeight="262.0" prefWidth="328.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="51.20001220703125" text="Id" />
+            <TableColumn fx:id="titleColumn" prefWidth="124.0" text="Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="90.40000915527344" text="Author" />
+         </columns>
+      </TableView>
+      <Text layoutX="77.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available books">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="textArea" layoutX="49.0" layoutY="454.0" prefHeight="114.0" prefWidth="288.0" />
+      <Button fx:id="borrowBttn" layoutX="161.0" layoutY="593.0" mnemonicParsing="false" onAction="#borrow" text="Borrow" />
+      <Text layoutX="453.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrowed books">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <TableView fx:id="table2" layoutX="398.0" layoutY="179.0" prefHeight="262.0" prefWidth="328.0">
+         <columns>
+            <TableColumn fx:id="idColumn1" prefWidth="51.20001220703125" text="Id" />
+            <TableColumn fx:id="titleColumn1" prefWidth="124.0" text="Title" />
+            <TableColumn fx:id="authorColumn1" prefWidth="90.40000915527344" text="Author" />
+         </columns>
+      </TableView>
+      <TextArea fx:id="textArea2" layoutX="418.0" layoutY="454.0" prefHeight="114.0" prefWidth="288.0" />
+      <Button fx:id="returnBttn" layoutX="535.0" layoutY="593.0" mnemonicParsing="false" onAction="#returnBook" text="Return" />
+   </children>
+</AnchorPane>

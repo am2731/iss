@@ -1,8 +1,12 @@
 package repository;
 
-import model.Administrator;
+
 import model.JdbcUtils;
+import model.Librarian;
 import model.Subscriber;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import repository.Errors.RepositoryError;
 
 import java.sql.Connection;
@@ -22,6 +26,7 @@ public class SubscriberRepository implements ISubscriberRepository{
 
     @Override
     public Subscriber findByEmail(String given_email) {
+        /*
         Connection con=dbUtils.getConnection();
         Subscriber subscriber = null;
         try(PreparedStatement preStmt = con.prepareStatement("select * from Subscribers where email = ?")){
@@ -49,6 +54,38 @@ public class SubscriberRepository implements ISubscriberRepository{
         }
 
 
+        return subscriber;
+
+         */
+        Subscriber subscriber = null;
+        try{
+            Hibernater.initialize();
+            try(Session session = Hibernater.sessionFactory.openSession()) {
+                Transaction tx = null;
+                try {
+
+
+                    session.beginTransaction();
+                    Query query = session.createQuery("from Subscriber where email  = :email_");
+
+                    query.setParameter("email_", given_email);
+                    subscriber = (Subscriber) query.getSingleResult();
+                    session.getTransaction().commit();
+
+                    tx.commit();
+                } catch (RuntimeException ex) {
+                    if (tx != null)
+                        tx.rollback();
+                }
+            }
+        }catch (Exception ex){
+
+            System.err.println("Error DB"+ex);
+        }
+        finally {
+            Hibernater.close();
+
+        }
         return subscriber;
     }
 

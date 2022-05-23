@@ -23,7 +23,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.example.problema3_javafx'
+
     mainClass = 'com.example.problema3_javafx.HelloApplication'
 }
 
@@ -33,23 +33,22 @@ javafx {
 }
 
 dependencies {
-    implementation('org.controlsfx:controlsfx:11.1.0')
-    implementation('com.dlsc.formsfx:formsfx-core:11.3.2') {
-        exclude(group: 'org.openjfx')
-    }
-    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
+
 
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.0'
     implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.0'
 
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    implementation  'org.hibernate:hibernate-core:5.2.10.Final'
+    implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+    implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+
+    implementation 'org.javassist:javassist:3.29.0-GA'
+
     runtimeOnly group: 'org.xerial', name:'sqlite-jdbc', version:'3.36.0.3'
-    
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+
 
 
 }
 
-test {
-    useJUnitPlatform()
-}

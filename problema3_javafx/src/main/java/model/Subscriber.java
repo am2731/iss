@@ -7,6 +7,21 @@ public class Subscriber extends Entity<Integer> {
     private String email;
     private String password;
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    private Integer id;
+
+    public Subscriber(){
+
+    }
     public Subscriber(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

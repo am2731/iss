@@ -6,10 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Librarian;
+import model.Subscriber;
 
 import java.io.IOException;
-
-import static Utils.Functions.encryptPassword;
 
 public class LoginController extends AbstractController {
 
@@ -19,9 +19,6 @@ public class LoginController extends AbstractController {
 
     @FXML
     private Button buttonLogin;
-
-    @FXML
-    private Button buttonSignUp;
 
     @FXML
     private PasswordField textFieldPassword;
@@ -36,7 +33,15 @@ public class LoginController extends AbstractController {
 
         try {
             controller.logIn(email, password);
-            ScreenController.switchScene((Stage) buttonLogin.getScene().getWindow(), "mainProfile-view.fxml", new mainProfileController(controller));
+
+            try {
+                Subscriber subscriber = (Subscriber) controller.getCurrentAdmin();
+                ScreenController.switchScene((Stage) buttonLogin.getScene().getWindow(), "subscriberProfile-view.fxml", new subscriberProfileController(controller));
+            } catch (Exception e) {
+                Librarian librarian = (Librarian) controller.getCurrentAdmin();
+                ScreenController.switchScene((Stage) buttonLogin.getScene().getWindow(), "librarianProfile-view.fxml", new librarianProfileController(controller));
+            }
+
         } catch (RuntimeException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.show();

@@ -7,11 +7,26 @@ public class Librarian extends Entity<Integer> {
     private String email;
     private String password;
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    private Integer id;
+
     public Librarian(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+    }
+    public Librarian(){
+
     }
 
     public String getFirstName() {
@@ -45,4 +60,7 @@ public class Librarian extends Entity<Integer> {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+
 }
